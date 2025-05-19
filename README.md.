@@ -1,0 +1,29 @@
+# GestionRobles
+
+![Portada del proyecto](recursos/gestion_robles_logo_sinFondo.png)
+
+Una breve descripción de lo que hace tu proyecto. Por ejemplo:
+
+Este proyecto es una aplicación sencilla que permite gestionar [lo que haga tu proyecto], desarrollada con [tecnologías usadas].
+
+## Características
+
+- Funcionalidad 1
+- Funcionalidad 2
+- Funcionalidad 3
+
+## Tecnologías utilizadas
+
+- Lenguaje o framework 1
+- Lenguaje o framework 2
+- Base de datos u otras herramientas
+
+## Capturas de pantalla
+
+![Captura de pantalla](ruta/a/otra/imagen.png)
+
+## Instalación
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu_usuario/tu_repositorio.git
