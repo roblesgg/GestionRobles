@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductosController">
+   <children>
+      <ImageView fx:id="imgFondo" fitHeight="438.0" fitWidth="712.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imgFondoBlur.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgFlecha" fitHeight="50.0" fitWidth="50.0" layoutX="662.0" onMouseClicked="#volverMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imgVolver.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblProductos" layoutX="291.0" layoutY="7.0" text="Productos">
+         <font>
+            <Font name="Calibri Bold" size="31.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvProductos" layoutX="13.0" layoutY="51.0" prefHeight="258.0" prefWidth="686.0" style="-fx-background-color: #cab8a4;">
+        <columns>
+          <TableColumn fx:id="TcNombre" prefWidth="216.0" text="Nombre" />
+          <TableColumn fx:id="TcPrecio" prefWidth="268.0" text="Precio" />
+            <TableColumn fx:id="TcStock" prefWidth="215.20001220703125" text="Stock" />
+        </columns>
+      </TableView>
+      <HBox alignment="CENTER" layoutY="350.0" prefHeight="50.0" prefWidth="712.0">
+         <children>
+            <Button fx:id="btnAnadir" mnemonicParsing="false" onAction="#anadirProducto" prefHeight="46.0" prefWidth="250.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" text="Añadir">
+               <font>
+                  <Font name="Calibri Bold" size="25.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editarProducto" prefHeight="46.0" prefWidth="250.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" text="Editar">
+               <font>
+                  <Font name="Calibri Bold" size="25.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnBorrar" mnemonicParsing="false" onAction="#borrarProducto" prefHeight="46.0" prefWidth="250.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" text="Borrar">
+               <font>
+                  <Font name="Calibri Bold" size="25.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="299.0" prefHeight="50.0" prefWidth="712.0">
+         <children>
+            <TextField fx:id="txtFieldNombre" prefHeight="27.0" prefWidth="230.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
+            <TextField fx:id="txtFieldPrecio" prefHeight="27.0" prefWidth="230.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
+            <TextField fx:id="txtFieldStock" prefHeight="27.0" prefWidth="230.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

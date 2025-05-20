@@ -39,7 +39,7 @@ public class LoginController {
 
             // Cambia la escena actual por la nueva
             stage.setScene(scene);
-            stage.setTitle("Menú Principal");
+            stage.setTitle("Gestión Robles");
             stage.show();
 
         } catch (Exception e) {
