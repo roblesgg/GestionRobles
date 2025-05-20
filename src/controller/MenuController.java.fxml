@@ -13,7 +13,7 @@
          </image>
       </ImageView>
       <Label layoutX="342.0" layoutY="191.0" text="Menu" />
-      <ImageView fx:id="imgFlecha" fitHeight="50.0" fitWidth="50.0" layoutX="662.0" onMouseClicked="#volverLogin" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="41.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/imgVolver.png" />
          </image>

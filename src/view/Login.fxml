@@ -23,5 +23,10 @@
             <Font name="Calibri Bold" size="40.0" />
          </font>
       </Button>
+      <ImageView fx:id="imgCruz" fitHeight="50.0" fitWidth="50.0" layoutX="662.0" onMouseClicked="#salir" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imgCruz.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

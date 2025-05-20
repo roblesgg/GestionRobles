@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -15,11 +16,15 @@ public class LoginController {
     private Button btnEntrar;
 
     @FXML
+    private ImageView imgCruz;
+
+    @FXML
     private ImageView imgFondo;
 
     @FXML
     private ImageView imgLogo;
 
+    //Abrir menu
     @FXML
     void abrirMenu(ActionEvent event) {
         try {
@@ -40,6 +45,13 @@ public class LoginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    //Salir de programa
+    @FXML
+    void salir(MouseEvent event) {
+    	Stage stage=(Stage) imgCruz.getScene().getWindow();
+    	stage.close();
     }
 
 }
