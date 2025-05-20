@@ -9,6 +9,7 @@ module GestionRobles {
 	requires javafx.base;
 	requires javafx.controls;
 	requires javafx.graphics;
+	requires java.sql;
     exports main;
     opens controller to javafx.fxml;
 
