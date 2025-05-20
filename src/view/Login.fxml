@@ -18,7 +18,7 @@
             <Image url="@../../img/imgLogo.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnEntrar" layoutX="278.0" layoutY="249.0" mnemonicParsing="false" style="-fx-background-radius: 40; -fx-background-color: #cab8a4;" text="Entrar">
+      <Button fx:id="btnEntrar" layoutX="278.0" layoutY="249.0" mnemonicParsing="false" onAction="#abrirMenu" style="-fx-background-radius: 40; -fx-background-color: #cab8a4;" text="Entrar">
          <font>
             <Font name="Calibri Bold" size="40.0" />
          </font>
