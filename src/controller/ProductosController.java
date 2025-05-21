@@ -34,16 +34,16 @@ import util.Alertas;
 public class ProductosController {
 
 	@FXML
-	private TableColumn<Producto, String> TcNombre;
+	private TableColumn<Producto, String> tcNombre;
 
 	@FXML
-	private TableColumn<Producto, Double> TcPrecio;
+	private TableColumn<Producto, Double> tcPrecio;
 
 	@FXML
-	private TableColumn<Producto, Integer> TcStock;
+	private TableColumn<Producto, Integer> tcStock;
 
     @FXML
-    private TableColumn<Producto, String> TcDescripcion;
+    private TableColumn<Producto, String> tcDescripcion;
 
     @FXML
     private Button btnAgregar;
@@ -101,10 +101,10 @@ public class ProductosController {
     //cargar productos
     public void cargarProductos() {
         // Configuramos las columnas para que muestren las propiedades correctas de Producto
-        TcNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        TcPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        TcStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        TcDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        tcNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        tcPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
+        tcStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        tcDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
 
 
         // Obtenemos la lista de productos de la base de datos
