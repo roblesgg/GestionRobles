@@ -104,5 +104,23 @@ public class VentaDatabase {
             e.printStackTrace();
         }
     }
+    
+    public static int borrarTodasVentasConDetalles() throws Exception {
+        String borrarDetalles = "DELETE FROM detalle_venta";
+        String borrarVentas = "DELETE FROM venta";
+
+        try (
+            Connection conn = ConexionBD.getConnection();
+            Statement stmt = conn.createStatement()
+        ) {
+            // Primero eliminamos los detalles de las ventas (por dependencia)
+            stmt.executeUpdate(borrarDetalles);
+
+            // Luego eliminamos las ventas
+            int eliminadas = stmt.executeUpdate(borrarVentas);
+
+            return eliminadas;
+        }
+    }
 
 }

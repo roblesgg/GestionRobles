@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HistorialController">
+   <children>
+      <ImageView fx:id="imgFondo" fitHeight="438.0" fitWidth="712.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imgFondoBlur.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgFlecha" fitHeight="50.0" fitWidth="50.0" layoutX="662.0" onMouseClicked="#volverMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imgVolver.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblProductos" layoutX="302.0" layoutY="7.0" text="Historial">
+         <font>
+            <Font name="Calibri Bold" size="31.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvHistorial" layoutX="13.0" layoutY="51.0" prefHeight="328.0" prefWidth="391.0" style="-fx-background-color: #cab8a4;" styleClass="-fx-background-color:  #cab8a4;">
+         <columns>
+            <TableColumn fx:id="tcNombreHistorial" prefWidth="110.4000244140625" style="-fx-background-color: #a9947d;" text="Nombre" />
+            <TableColumn fx:id="tcApellidoHistorial" prefWidth="108.0" style="-fx-background-color: #a9947d;" text="Apellido" />
+            <TableColumn fx:id="tcHoraHistorial" prefWidth="57.5999755859375" style="-fx-background-color: #a9947d;" text="Hora" />
+            <TableColumn fx:id="tcDescripcionHistorial" prefWidth="115.20001220703125" style="-fx-background-color: #a9947d;" text="Descripcion" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnBorrarTodo" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#borrarTodosHistorial" prefHeight="36.0" prefWidth="105.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: red; -fx-border-radius: 20; -fx-background-radius: 20;" text="Borrar Todos">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tvVendido" layoutX="454.0" layoutY="51.0" onMouseClicked="#restarDelCarrito" prefHeight="328.0" prefWidth="242.0" style="-fx-background-color: #cab8a4;" styleClass="-fx-background-color:  #cab8a4;">
+         <columns>
+            <TableColumn fx:id="tcProductoVendido" prefWidth="100.800048828125" style="-fx-background-color: #a9947d;" text="Producto" />
+            <TableColumn fx:id="tcCantidadVendido" prefWidth="78.39996337890625" style="-fx-background-color: #a9947d;" text="Cantidad" />
+            <TableColumn fx:id="tcPrecioVendido" minWidth="9.5999755859375" prefWidth="62.4000244140625" style="-fx-background-color: #a9947d;" text="Precio" />
+         </columns>
+      </TableView>
+      <Label fx:id="lblTotal" layoutX="575.0" layoutY="211.0" prefHeight="36.0" prefWidth="122.0">
+         <font>
+            <Font name="Calibri" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCambio" layoutX="571.0" layoutY="283.0" prefHeight="36.0" prefWidth="122.0">
+         <font>
+            <Font name="Calibri" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

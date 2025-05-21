@@ -12,135 +12,152 @@ import javafx.stage.Stage;
 
 public class MenuController {
 
-    @FXML
-    private Button btnEncargos;
+	@FXML
+	private Button btnEncargos;
 
-    @FXML
-    private Button btnHistorial;
+	@FXML
+	private Button btnHistorial;
 
-    @FXML
-    private Button btnProductos;
+	@FXML
+	private Button btnProductos;
 
-    @FXML
-    private Button btnReiniciarTodo;
+	@FXML
+	private Button btnReiniciarTodo;
 
-    @FXML
-    private Button btnStock;
+	@FXML
+	private Button btnStock;
 
-    @FXML
-    private Button btnVentaDirecta;
+	@FXML
+	private Button btnVentaDirecta;
 
-    @FXML
-    private ImageView imgFlecha;
+	@FXML
+	private ImageView imgFlecha;
 
-    @FXML
-    private ImageView imgFondo;
+	@FXML
+	private ImageView imgFondo;
 //----------------------------------------------------
-    
-    @FXML
-    void abrirEncargos(ActionEvent event) {
 
-    }
+	@FXML
+	void abrirEncargos(ActionEvent event) {
 
-    @FXML
-    void abrirHistorial(ActionEvent event) {
+	}
 
-    }
+	@FXML
+	void abrirHistorial(ActionEvent event) {
+		try {
+			// Carga la vista Menu.fxml
+			Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/Historial.fxml"));
 
-    @FXML
-    void abrirProductos(ActionEvent event) {
-        try {
-            // Carga la vista Menu.fxml
-            Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/Productos.fxml"));
+			// Obtén la ventana actual a partir del botón
+			Stage stage = (Stage) imgFlecha.getScene().getWindow();
 
-            // Obtén la ventana actual a partir del botón
-            Stage stage = (Stage) imgFlecha.getScene().getWindow();
+			// Crea una nueva escena con la vista Menu
+			Scene scene = new Scene(menuRoot);
 
-            // Crea una nueva escena con la vista Menu
-            Scene scene = new Scene(menuRoot);
+			// Cambia la escena actual por la nueva
+			stage.setScene(scene);
+			stage.setTitle("Gestión Robles");
+			stage.show();
 
-            // Cambia la escena actual por la nueva
-            stage.setScene(scene);
-            stage.setTitle("Gestión Robles");
-            stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	@FXML
+	void abrirProductos(ActionEvent event) {
+		try {
+			// Carga la vista Menu.fxml
+			Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/Productos.fxml"));
 
-    //Abrir stock
-    @FXML
-    void abrirStock(ActionEvent event) {
-        try {
-            // Carga la vista Menu.fxml
-            Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/Stock.fxml"));
+			// Obtén la ventana actual a partir del botón
+			Stage stage = (Stage) imgFlecha.getScene().getWindow();
 
-            // Obtén la ventana actual a partir del botón
-            Stage stage = (Stage) imgFlecha.getScene().getWindow();
+			// Crea una nueva escena con la vista Menu
+			Scene scene = new Scene(menuRoot);
 
-            // Crea una nueva escena con la vista Menu
-            Scene scene = new Scene(menuRoot);
+			// Cambia la escena actual por la nueva
+			stage.setScene(scene);
+			stage.setTitle("Gestión Robles");
+			stage.show();
 
-            // Cambia la escena actual por la nueva
-            stage.setScene(scene);
-            stage.setTitle("Gestión Robles");
-            stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	// Abrir stock
+	@FXML
+	void abrirStock(ActionEvent event) {
+		try {
+			// Carga la vista Menu.fxml
+			Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/Stock.fxml"));
 
-    //Abrir venta directa
-    @FXML
-    void abrirVentaDirecta(ActionEvent event) {
-        try {
-            // Carga la vista Menu.fxml
-            Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/VentaDirecta.fxml"));
+			// Obtén la ventana actual a partir del botón
+			Stage stage = (Stage) imgFlecha.getScene().getWindow();
 
-            // Obtén la ventana actual a partir del botón
-            Stage stage = (Stage) imgFlecha.getScene().getWindow();
+			// Crea una nueva escena con la vista Menu
+			Scene scene = new Scene(menuRoot);
 
-            // Crea una nueva escena con la vista Menu
-            Scene scene = new Scene(menuRoot);
+			// Cambia la escena actual por la nueva
+			stage.setScene(scene);
+			stage.setTitle("Gestión Robles");
+			stage.show();
 
-            // Cambia la escena actual por la nueva
-            stage.setScene(scene);
-            stage.setTitle("Gestión Robles");
-            stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	// Abrir venta directa
+	@FXML
+	void abrirVentaDirecta(ActionEvent event) {
+		try {
+			// Carga la vista Menu.fxml
+			Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/VentaDirecta.fxml"));
 
-    @FXML
-    void reiniciarTodo(ActionEvent event) {
+			// Obtén la ventana actual a partir del botón
+			Stage stage = (Stage) imgFlecha.getScene().getWindow();
 
-    }
-    
-    //Volver al login
-    @FXML
-    void volverLogin(MouseEvent event) {
-        try {
-            // Carga la vista Menu.fxml
-            Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
+			// Crea una nueva escena con la vista Menu
+			Scene scene = new Scene(menuRoot);
 
-            // Obtén la ventana actual a partir del botón
-            Stage stage = (Stage) imgFlecha.getScene().getWindow();
+			// Cambia la escena actual por la nueva
+			stage.setScene(scene);
+			stage.setTitle("Gestión Robles");
+			stage.show();
 
-            // Crea una nueva escena con la vista Menu
-            Scene scene = new Scene(menuRoot);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-            // Cambia la escena actual por la nueva
-            stage.setScene(scene);
-            stage.setTitle("Gestión Robles");
-            stage.show();
+	@FXML
+	void reiniciarTodo(ActionEvent event) {
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	}
+
+	// Volver al login
+	@FXML
+	void volverLogin(MouseEvent event) {
+		try {
+			// Carga la vista Menu.fxml
+			Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
+
+			// Obtén la ventana actual a partir del botón
+			Stage stage = (Stage) imgFlecha.getScene().getWindow();
+
+			// Crea una nueva escena con la vista Menu
+			Scene scene = new Scene(menuRoot);
+
+			// Cambia la escena actual por la nueva
+			stage.setScene(scene);
+			stage.setTitle("Gestión Robles");
+			stage.show();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }
