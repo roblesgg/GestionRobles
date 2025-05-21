@@ -35,7 +35,7 @@
             <TableColumn fx:id="tcDescripcion" prefWidth="107.19998779296873" style="-fx-background-color: #a9947d;" text="Descripcion" />
          </columns>
       </TableView>
-      <TableView fx:id="tvCarrito" layoutX="367.0" layoutY="61.0" prefHeight="151.0" prefWidth="330.0" style="-fx-background-color: #cab8a4;" styleClass="-fx-background-color:  #cab8a4;">
+      <TableView fx:id="tvCarrito" layoutX="367.0" layoutY="61.0" onMouseClicked="#restarDelCarrito" prefHeight="151.0" prefWidth="330.0" style="-fx-background-color: #cab8a4;" styleClass="-fx-background-color:  #cab8a4;">
          <columns>
             <TableColumn fx:id="tcProductoCarrito" prefWidth="179.2000732421875" style="-fx-background-color: #a9947d;" text="Producto" />
             <TableColumn fx:id="tcCantidadCarrito" prefWidth="64.7999267578125" style="-fx-background-color: #a9947d;" text="Cantidad" />

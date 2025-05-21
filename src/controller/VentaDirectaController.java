@@ -92,7 +92,7 @@ public class VentaDirectaController {
     @FXML
     void initialize() {
         cargarProductos();
-        cargarCambio();
+        cargarCarrito();
         //listener para actualizar entiempo real
         txtFieldEfectivo.textProperty().addListener((observable, oldValue, newValue) -> {
             cargarCambio();
@@ -188,6 +188,24 @@ public class VentaDirectaController {
         }
         lblTotal.setText(String.format("%.2f €", total));
     }
+    
+    //quitar del carrito productos
+    @FXML
+    private void restarDelCarrito(MouseEvent event) {
+        Carrito seleccionado = tvCarrito.getSelectionModel().getSelectedItem();
+        if (seleccionado != null) {
+            int cantidadActual = seleccionado.getCantidad();
+            if (cantidadActual > 1) {
+                seleccionado.setCantidad(cantidadActual - 1);
+            } else {
+                // Si la cantidad es 1, al restar queda 0, elimina el producto del carrito
+                carrito.remove(seleccionado);
+            }
+            tvCarrito.refresh();
+            actualizarTotal();
+        }
+    }
+
     
     @FXML
     void venderCarrito(ActionEvent event) {
