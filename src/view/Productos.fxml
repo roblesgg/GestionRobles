@@ -30,10 +30,10 @@
       </Label>
       <TableView fx:id="tvProductos" layoutX="13.0" layoutY="51.0" prefHeight="258.0" prefWidth="686.0" style="-fx-background-color: #cab8a4;" styleClass="-fx-background-color:  #cab8a4;">
         <columns>
-          <TableColumn fx:id="tcNombre" prefWidth="213.60003662109375" style="-fx-background-color: #a9947d;" text="Nombre" />
-          <TableColumn fx:id="tcPrecio" prefWidth="98.39996337890625" style="-fx-background-color: #a9947d;" text="Precio" />
-            <TableColumn fx:id="tcStock" prefWidth="105.60003662109375" style="-fx-background-color: #a9947d;" text="Stock" />
-            <TableColumn fx:id="tcDescripcion" prefWidth="271.20001220703125" style="-fx-background-color: #a9947d;" text="Descripcion" />
+          <TableColumn fx:id="tcNombre" prefWidth="238.39996337890625" style="-fx-background-color: #a9947d;" text="Nombre" />
+          <TableColumn fx:id="tcPrecio" prefWidth="105.60003662109375" style="-fx-background-color: #a9947d;" text="Precio" />
+            <TableColumn fx:id="tcStock" prefWidth="93.60003662109375" style="-fx-background-color: #a9947d;" text="Stock" />
+            <TableColumn fx:id="tcDescripcion" prefWidth="255.99993896484375" style="-fx-background-color: #a9947d;" text="Descripcion" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" layoutY="350.0" prefHeight="50.0" prefWidth="712.0">
