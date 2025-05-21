@@ -69,6 +69,7 @@ public class MenuController {
         }
     }
 
+    //Abrir stock
     @FXML
     void abrirStock(ActionEvent event) {
         try {
@@ -91,9 +92,27 @@ public class MenuController {
         }
     }
 
+    //Abrir venta directa
     @FXML
     void abrirVentaDirecta(ActionEvent event) {
+        try {
+            // Carga la vista Menu.fxml
+            Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/VentaDirecta.fxml"));
 
+            // Obtén la ventana actual a partir del botón
+            Stage stage = (Stage) imgFlecha.getScene().getWindow();
+
+            // Crea una nueva escena con la vista Menu
+            Scene scene = new Scene(menuRoot);
+
+            // Cambia la escena actual por la nueva
+            stage.setScene(scene);
+            stage.setTitle("Gestión Robles");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
