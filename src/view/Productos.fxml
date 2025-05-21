@@ -63,5 +63,10 @@
             <TextField fx:id="txtFieldDescripcion" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
          </children>
       </HBox>
+      <Button fx:id="btnBorrarTodo" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#borrarTodosProductos" prefHeight="36.0" prefWidth="105.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: red; -fx-border-radius: 20; -fx-background-radius: 20;" text="Borrar Todos">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

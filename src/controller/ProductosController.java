@@ -53,6 +53,9 @@ public class ProductosController {
 
     @FXML
     private Button btnEditar;
+    
+    @FXML
+    private Button btnBorrarTodo;
 
     @FXML
     private ImageView imgFlecha;
@@ -197,6 +200,41 @@ public class ProductosController {
             Alertas.mostrarAlerta(Alert.AlertType.WARNING, "Sin selección", "Selecciona un producto para borrar.");
         }
     }
+    
+    //Borrar todos los productos
+    @FXML
+    void borrarTodosProductos(ActionEvent event) {
+        // Crear un cuadro de diálogo para confirmar la eliminación
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setTitle("Confirmar eliminación masiva");
+        confirmacion.setHeaderText("¿Estás seguro de que deseas borrar TODOS los productos?");
+
+        Optional<ButtonType> resultado = confirmacion.showAndWait();
+
+        // Si el usuario confirma
+        if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+            try (Connection conn = ConexionBD.getConnection()) {
+                String sql = "DELETE FROM producto";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+
+                int filasAfectadas = stmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    // Limpiar la tabla y recargar datos
+                    cargarProductos();
+
+                    Alertas.mostrarAlerta(Alert.AlertType.INFORMATION, "Éxito", "Todos los productos han sido eliminados.");
+                } else {
+                    Alertas.mostrarAlerta(Alert.AlertType.WARNING, "Sin cambios", "No había productos para eliminar.");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                Alertas.mostrarAlerta(Alert.AlertType.ERROR, "Error en la base de datos", e.getMessage());
+            }
+        }
+    }
+
 
     //Editar producto
     @FXML
