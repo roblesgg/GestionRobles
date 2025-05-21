@@ -28,16 +28,17 @@
             <Font name="Calibri Bold" size="31.0" />
          </font>
       </Label>
-      <TableView fx:id="tvProductos" layoutX="13.0" layoutY="51.0" prefHeight="258.0" prefWidth="686.0" style="-fx-background-color: #cab8a4;">
+      <TableView fx:id="tvProductos" layoutX="13.0" layoutY="51.0" prefHeight="258.0" prefWidth="686.0" style="-fx-background-color: #cab8a4;" styleClass="-fx-background-color:  #cab8a4;">
         <columns>
-          <TableColumn fx:id="TcNombre" prefWidth="216.0" text="Nombre" />
-          <TableColumn fx:id="TcPrecio" prefWidth="268.0" text="Precio" />
-            <TableColumn fx:id="TcStock" prefWidth="215.20001220703125" text="Stock" />
+          <TableColumn fx:id="TcNombre" prefWidth="213.60003662109375" style="-fx-background-color: #a9947d;" text="Nombre" />
+          <TableColumn fx:id="TcPrecio" prefWidth="98.39996337890625" style="-fx-background-color: #a9947d;" text="Precio" />
+            <TableColumn fx:id="TcStock" prefWidth="105.60003662109375" style="-fx-background-color: #a9947d;" text="Stock" />
+            <TableColumn fx:id="TcDescripcion" prefWidth="271.20001220703125" style="-fx-background-color: #a9947d;" text="Descripcion" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" layoutY="350.0" prefHeight="50.0" prefWidth="712.0">
          <children>
-            <Button fx:id="btnAnadir" mnemonicParsing="false" onAction="#anadirProducto" prefHeight="46.0" prefWidth="250.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" text="Añadir">
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregarProducto" prefHeight="46.0" prefWidth="250.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" text="Agregar">
                <font>
                   <Font name="Calibri Bold" size="25.0" />
                </font>
@@ -56,9 +57,10 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="299.0" prefHeight="50.0" prefWidth="712.0">
          <children>
-            <TextField fx:id="txtFieldNombre" prefHeight="27.0" prefWidth="230.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
-            <TextField fx:id="txtFieldPrecio" prefHeight="27.0" prefWidth="230.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
-            <TextField fx:id="txtFieldStock" prefHeight="27.0" prefWidth="230.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
+            <TextField fx:id="txtFieldNombre" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
+            <TextField fx:id="txtFieldPrecio" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
+            <TextField fx:id="txtFieldStock" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
+            <TextField fx:id="txtFieldDescripcion" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
          </children>
       </HBox>
    </children>

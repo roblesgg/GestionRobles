@@ -12,5 +12,7 @@ module GestionRobles {
 	requires java.sql;
     exports main;
     opens controller to javafx.fxml;
+    opens model to javafx.base;
+
 
 }
