@@ -40,9 +40,14 @@
          </image>
       </ImageView>
       <TextField fx:id="txtFieldPrecio" layoutX="275.0" layoutY="353.0" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
-      <ImageView fx:id="imgSuma" fitHeight="50.0" fitWidth="37.0" layoutX="367.0" layoutY="348.0" onMouseClicked="#añadirCantidad" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgSuma" fitHeight="50.0" fitWidth="37.0" layoutX="373.0" layoutY="348.0" onMouseClicked="#añadirCantidad" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/imgSumar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgResta" fitHeight="36.0" fitWidth="50.0" layoutX="218.0" layoutY="358.0" onMouseClicked="#restarCantidad" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imgRestar.png" />
          </image>
       </ImageView>
    </children>

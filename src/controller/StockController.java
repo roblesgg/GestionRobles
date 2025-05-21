@@ -34,6 +34,9 @@ public class StockController {
 
     @FXML
     private ImageView imgSuma;
+    
+    @FXML
+    private ImageView imgResta;
 
     @FXML
     private Label lblProductos;
@@ -103,8 +106,109 @@ public class StockController {
     // Métodos pendientes (de momento vacíos)
     @FXML
     void añadirCantidad(MouseEvent event) {
-        // Aquí implementarás la lógica para añadir cantidad al stock del producto seleccionado
+        try {
+            // Obtener el producto seleccionado de la tabla
+            Producto productoSeleccionado = tvProductos.getSelectionModel().getSelectedItem();
+
+            // Verificar que haya un producto seleccionado
+            if (productoSeleccionado == null) {
+                System.out.println("No se ha seleccionado ningún producto.");
+                return;
+            }
+
+            // Obtener la cantidad introducida en el campo de texto
+            String textoCantidad = txtFieldPrecio.getText().trim();
+
+            // Verificar que el campo no esté vacío y que sea un número entero válido
+            if (textoCantidad.isEmpty()) {
+                System.out.println("Por favor, introduce una cantidad.");
+                return;
+            }
+
+            int cantidadASumar = Integer.parseInt(textoCantidad);
+
+            // Sumar la cantidad al stock actual
+            int nuevoStock = productoSeleccionado.getStock() + cantidadASumar;
+
+            // Actualizar el stock en la base de datos
+            try (Connection conn = ConexionBD.getConnection()) {
+                String sql = "UPDATE producto SET stock = ? WHERE id_producto = ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setInt(1, nuevoStock);
+                stmt.setInt(2, productoSeleccionado.getIdProducto()); // Asegúrate de tener este getter
+                stmt.executeUpdate();
+            }
+
+            // Recargar la tabla con los nuevos datos
+            cargarStock();
+
+            // Vaciar el campo de texto
+            txtFieldPrecio.clear();
+
+            // Mensaje opcional
+            System.out.println("Stock actualizado correctamente.");
+            
+        } catch (NumberFormatException e) {
+            System.out.println("Cantidad no válida. Debe ser un número entero.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al actualizar el stock.");
+        }
     }
+    
+    @FXML
+    void restarCantidad(MouseEvent event) {
+        try {
+            // Obtener el producto seleccionado
+            Producto productoSeleccionado = tvProductos.getSelectionModel().getSelectedItem();
+
+            if (productoSeleccionado == null) {
+                System.out.println("No se ha seleccionado ningún producto.");
+                return;
+            }
+
+            String textoCantidad = txtFieldPrecio.getText().trim();
+
+            if (textoCantidad.isEmpty()) {
+                System.out.println("Introduce una cantidad a restar.");
+                return;
+            }
+
+            int cantidadARestar = Integer.parseInt(textoCantidad);
+
+            // Verificar que no se reste más de lo que hay en stock
+            int stockActual = productoSeleccionado.getStock();
+
+            if (cantidadARestar > stockActual) {
+                System.out.println("No puedes restar más de lo que hay en stock.");
+                return;
+            }
+
+            int nuevoStock = stockActual - cantidadARestar;
+
+            // Actualizar el stock en la base de datos
+            try (Connection conn = ConexionBD.getConnection()) {
+                String sql = "UPDATE producto SET stock = ? WHERE id_producto = ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setInt(1, nuevoStock);
+                stmt.setInt(2, productoSeleccionado.getIdProducto());
+                stmt.executeUpdate();
+            }
+
+            // Recargar la tabla y limpiar el campo
+            cargarStock();
+            txtFieldPrecio.clear();
+
+            System.out.println("Stock reducido correctamente.");
+            
+        } catch (NumberFormatException e) {
+            System.out.println("Cantidad no válida. Debe ser un número entero.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al restar stock.");
+        }
+    }
+
 
     // Método para volver a la ventana del menú principal
     @FXML
