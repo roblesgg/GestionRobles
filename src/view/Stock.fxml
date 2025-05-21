@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StockController">
+   <children>
+      <ImageView fx:id="imgFondo" fitHeight="438.0" fitWidth="712.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imgFondoBlur.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgFlecha" fitHeight="50.0" fitWidth="50.0" layoutX="662.0" onMouseClicked="#volverMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imgVolver.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblProductos" layoutX="321.0" layoutY="7.0" text="Stock">
+         <font>
+            <Font name="Calibri Bold" size="31.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvProductos" layoutX="13.0" layoutY="51.0" prefHeight="285.0" prefWidth="686.0" style="-fx-background-color: #cab8a4;" styleClass="-fx-background-color:  #cab8a4;">
+         <columns>
+            <TableColumn fx:id="tcProducto" prefWidth="240.800048828125" style="-fx-background-color: #a9947d;" text="Producto" />
+            <TableColumn fx:id="tcStock" prefWidth="142.39996337890625" style="-fx-background-color: #a9947d;" text="Stock" />
+            <TableColumn fx:id="tcVendido" prefWidth="140.800048828125" style="-fx-background-color: #a9947d;" text="Vendido" />
+            <TableColumn fx:id="TcDescripcion" prefWidth="168.0" style="-fx-background-color: #a9947d;" text="Encargado" />
+         </columns>
+      </TableView>
+      <ImageView fx:id="imgReiniciar" fitHeight="44.0" fitWidth="50.0" layoutX="450.0" layoutY="347.0" onMouseClicked="#reiniciarVendido" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imgReiniciar.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtFieldPrecio" layoutX="275.0" layoutY="353.0" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: #cab8a4; -fx-background-radius: 20;" />
+      <ImageView fx:id="imgSuma" fitHeight="50.0" fitWidth="37.0" layoutX="367.0" layoutY="348.0" onMouseClicked="#añadirCantidad" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/imgSumar.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

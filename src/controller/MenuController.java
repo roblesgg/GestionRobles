@@ -71,7 +71,24 @@ public class MenuController {
 
     @FXML
     void abrirStock(ActionEvent event) {
+        try {
+            // Carga la vista Menu.fxml
+            Parent menuRoot = FXMLLoader.load(getClass().getResource("/view/Stock.fxml"));
 
+            // Obtén la ventana actual a partir del botón
+            Stage stage = (Stage) imgFlecha.getScene().getWindow();
+
+            // Crea una nueva escena con la vista Menu
+            Scene scene = new Scene(menuRoot);
+
+            // Cambia la escena actual por la nueva
+            stage.setScene(scene);
+            stage.setTitle("Gestión Robles");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
