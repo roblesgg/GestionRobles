@@ -83,6 +83,16 @@ public class ProductosController {
     @FXML
     public void initialize() {
     	cargarProductos();
+    	//Esto hace que se completen los field con el producto que se selecccione
+    	tvProductos.setOnMouseClicked(event -> {
+    	    Producto seleccionado = tvProductos.getSelectionModel().getSelectedItem();
+    	    if (seleccionado != null) {
+    	        txtFieldNombre.setText(seleccionado.getNombre());
+    	        txtFieldPrecio.setText(String.valueOf(seleccionado.getPrecio()));
+    	        txtFieldStock.setText(String.valueOf(seleccionado.getStock()));
+    	        txtFieldDescripcion.setText(seleccionado.getDescripcion());
+    	    }
+    	});
     }
 
     //cargar productos
