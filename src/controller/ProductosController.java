@@ -42,270 +42,258 @@ public class ProductosController {
 	@FXML
 	private TableColumn<Producto, Integer> tcStock;
 
-    @FXML
-    private TableColumn<Producto, String> tcDescripcion;
+	@FXML
+	private TableColumn<Producto, String> tcDescripcion;
 
-    @FXML
-    private Button btnAgregar;
+	@FXML
+	private Button btnAgregar;
 
-    @FXML
-    private Button btnBorrar;
+	@FXML
+	private Button btnBorrar;
 
-    @FXML
-    private Button btnEditar;
-    
-    @FXML
-    private Button btnBorrarTodo;
+	@FXML
+	private Button btnEditar;
 
-    @FXML
-    private ImageView imgFlecha;
+	@FXML
+	private Button btnBorrarTodo;
 
-    @FXML
-    private ImageView imgFondo;
+	@FXML
+	private ImageView imgFlecha;
 
-    @FXML
-    private Label lblProductos;
-    
-    @FXML
-    private TableView<Producto> tvProductos;
+	@FXML
+	private ImageView imgFondo;
 
-    @FXML
-    private TextField txtFieldNombre;
+	@FXML
+	private Label lblProductos;
 
-    @FXML
-    private TextField txtFieldPrecio;
+	@FXML
+	private TableView<Producto> tvProductos;
 
-    @FXML
-    private TextField txtFieldStock;
+	@FXML
+	private TextField txtFieldNombre;
 
-    @FXML
-    private TextField txtFieldDescripcion;
+	@FXML
+	private TextField txtFieldPrecio;
+
+	@FXML
+	private TextField txtFieldStock;
+
+	@FXML
+	private TextField txtFieldDescripcion;
 //----------------------------------------------------------------------
-    
-    //Inicializate
-    @FXML
-    public void initialize() {
-    	cargarProductos();
-    	//Esto hace que se completen los field con el producto que se selecccione
-    	tvProductos.setOnMouseClicked(event -> {
-    	    Producto seleccionado = tvProductos.getSelectionModel().getSelectedItem();
-    	    if (seleccionado != null) {
-    	        txtFieldNombre.setText(seleccionado.getNombre());
-    	        txtFieldPrecio.setText(String.valueOf(seleccionado.getPrecio()));
-    	        txtFieldStock.setText(String.valueOf(seleccionado.getStock()));
-    	        txtFieldDescripcion.setText(seleccionado.getDescripcion());
-    	    }
-    	});
-    }
 
-    //cargar productos
-    public void cargarProductos() {
-        // Configuramos las columnas para que muestren las propiedades correctas de Producto
-        tcNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        tcPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        tcStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        tcDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+	// Inicializate
+	@FXML
+	public void initialize() {
+		cargarProductos();
+		// Esto hace que se completen los field con el producto que se selecccione
+		tvProductos.setOnMouseClicked(event -> {
+			Producto seleccionado = tvProductos.getSelectionModel().getSelectedItem();
+			if (seleccionado != null) {
+				txtFieldNombre.setText(seleccionado.getNombre());
+				txtFieldPrecio.setText(String.valueOf(seleccionado.getPrecio()));
+				txtFieldStock.setText(String.valueOf(seleccionado.getStock()));
+				txtFieldDescripcion.setText(seleccionado.getDescripcion());
+			}
+		});
+	}
 
+	// cargar productos
+	public void cargarProductos() {
+		// Configuramos las columnas para que muestren las propiedades correctas de
+		// Producto
+		tcNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+		tcPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
+		tcStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+		tcDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
 
-        // Obtenemos la lista de productos de la base de datos
-        List<Producto> productos = ProductoDatabase.obtenerProductos();
+		// Obtenemos la lista de productos de la base de datos
+		List<Producto> productos = ProductoDatabase.obtenerProductos();
 
-        // Convertimos la lista a ObservableList para que la tabla pueda trabajar con ella
-        ObservableList<Producto> listaProductos = FXCollections.observableArrayList(productos);
+		// Convertimos la lista a ObservableList para que la tabla pueda trabajar con
+		// ella
+		ObservableList<Producto> listaProductos = FXCollections.observableArrayList(productos);
 
-        // Cargamos los productos en el TableView
-        tvProductos.setItems(listaProductos);
-    }
-    
-    //Agregar producto
-    @FXML
-    void agregarProducto(ActionEvent event) {
-    	try {
-            String nombre = txtFieldNombre.getText();
-            double precio = Double.parseDouble(txtFieldPrecio.getText());
-            int stock = Integer.parseInt(txtFieldStock.getText());
-            String descripcion = txtFieldDescripcion.getText();
+		// Cargamos los productos en el TableView
+		tvProductos.setItems(listaProductos);
+	}
 
-            Producto nuevoProducto = new Producto(nombre, precio, stock, descripcion);
+	// Agregar producto
+	@FXML
+	void agregarProducto(ActionEvent event) {
+		try {
+			String nombre = txtFieldNombre.getText();
+			double precio = Double.parseDouble(txtFieldPrecio.getText());
+			int stock = Integer.parseInt(txtFieldStock.getText());
+			String descripcion = txtFieldDescripcion.getText();
 
-            boolean exito = ProductoDatabase.insertarProducto(nuevoProducto);
+			Producto nuevoProducto = new Producto(nombre, precio, stock, descripcion);
 
-            if (exito) {
-                // Opcional: limpiar campos
-            	txtFieldNombre.clear();
-                txtFieldPrecio.clear();
-                txtFieldStock.clear();
-                txtFieldDescripcion.clear();
+			boolean exito = ProductoDatabase.insertarProducto(nuevoProducto);
 
-                // Recargar productos en la tabla para mostrar el nuevo
-                cargarProductos();
+			if (exito) {
+				// Opcional: limpiar campos
+				txtFieldNombre.clear();
+				txtFieldPrecio.clear();
+				txtFieldStock.clear();
+				txtFieldDescripcion.clear();
 
-                System.out.println("Producto añadido correctamente.");
-            } else {
-                System.out.println("Error al añadir el producto.");
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Por favor, ingresa valores numéricos válidos para precio y stock.");
-        }
-    }
+				// Recargar productos en la tabla para mostrar el nuevo
+				cargarProductos();
 
-    //Borrar producto
-    @FXML
-    void borrarProducto(ActionEvent event) {
-        // Obtener el producto seleccionado en la tabla
-        Producto productoSeleccionado = tvProductos.getSelectionModel().getSelectedItem();
+				System.out.println("Producto añadido correctamente.");
+			} else {
+				System.out.println("Error al añadir el producto.");
+			}
+		} catch (NumberFormatException e) {
+			System.out.println("Por favor, ingresa valores numéricos válidos para precio y stock.");
+		}
+	}
 
-        // Comprobar si hay un producto seleccionado
-        if (productoSeleccionado != null) {
-            // Crear un cuadro de diálogo para confirmar la eliminación
-            Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmacion.setTitle("Confirmar eliminación");  // Título del diálogo
-            confirmacion.setHeaderText("¿Estás seguro de que deseas borrar este producto?");  // Pregunta al usuario
-            confirmacion.setContentText("Producto: " + productoSeleccionado.getNombre());  // Mostrar nombre del producto
+	@FXML
+	void borrarProducto(ActionEvent event) {
+		// Obtener el producto seleccionado en la tabla
+		Producto productoSeleccionado = tvProductos.getSelectionModel().getSelectedItem();
 
-            // Mostrar la alerta y esperar la respuesta del usuario
-            Optional<ButtonType> resultado = confirmacion.showAndWait();
+		// Comprobar si hay un producto seleccionado
+		if (productoSeleccionado != null) {
+			// Crear un cuadro de diálogo para confirmar la eliminación
+			Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+			confirmacion.setTitle("Confirmar eliminación"); // Título del diálogo
+			confirmacion.setHeaderText("¿Estás seguro de que deseas borrar este producto?"); // Pregunta al usuario
+			confirmacion.setContentText("Producto: " + productoSeleccionado.getNombre()); // Mostrar nombre del producto
 
-            // Si el usuario presiona OK para confirmar
-            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
-                // Intentar borrar el producto de la base de datos
-                try (Connection conn = ConexionBD.getConnection()) {
-                    String sql = "DELETE FROM producto WHERE id_producto = ?";
-                    PreparedStatement stmt = conn.prepareStatement(sql);
-                    stmt.setInt(1, productoSeleccionado.getIdProducto());
+			// Mostrar la alerta y esperar la respuesta del usuario
+			Optional<ButtonType> resultado = confirmacion.showAndWait();
 
-                    // Ejecutar la eliminación y obtener número de filas afectadas
-                    int filasAfectadas = stmt.executeUpdate();
+			// Si el usuario presiona OK para confirmar
+			if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+				// Intentar borrar el producto usando el método de ProductoDatabase
+				boolean exito = ProductoDatabase.borrarProducto(productoSeleccionado.getIdProducto());
 
-                    if (filasAfectadas > 0) {
-                        // Si se borró correctamente, eliminar el producto del TableView
-                        tvProductos.getItems().remove(productoSeleccionado);
+				if (exito) {
+					// Si se borró correctamente, eliminar el producto del TableView
+					tvProductos.getItems().remove(productoSeleccionado);
 
-                        // Mostrar mensaje de éxito
-                        Alertas.mostrarAlerta(Alert.AlertType.INFORMATION, "Éxito", "Producto eliminado correctamente.");
-                    } else {
-                        // Si no se pudo borrar, mostrar error
-                        Alertas.mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo eliminar el producto.");
-                    }
+					// Mostrar mensaje de éxito
+					Alertas.mostrarAlerta(Alert.AlertType.INFORMATION, "Éxito", "Producto eliminado correctamente.");
+				} else {
+					// Si no se pudo borrar (por ejemplo, porque tiene ventas), mostrar advertencia
+					Alertas.mostrarAlerta(Alert.AlertType.WARNING, "No se pudo borrar",
+							"El producto tiene ventas asociadas y no puede ser eliminado.");
+				}
+			}
 
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    // En caso de error en la base de datos, mostrar mensaje de error
-                    Alertas.mostrarAlerta(Alert.AlertType.ERROR, "Error en la base de datos", e.getMessage());
-                }
-            }
+		} else {
+			// Si no se ha seleccionado ningún producto, mostrar advertencia
+			Alertas.mostrarAlerta(Alert.AlertType.WARNING, "Sin selección", "Selecciona un producto para borrar.");
+		}
+	}
 
-        } else {
-            // Si no se ha seleccionado ningún producto, mostrar advertencia
-            Alertas.mostrarAlerta(Alert.AlertType.WARNING, "Sin selección", "Selecciona un producto para borrar.");
-        }
-    }
-    
-    //Borrar todos los productos
-    @FXML
-    void borrarTodosProductos(ActionEvent event) {
-        // Crear un cuadro de diálogo para confirmar la eliminación
-        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmacion.setTitle("Confirmar eliminación masiva");
-        confirmacion.setHeaderText("¿Estás seguro de que deseas borrar TODOS los productos?");
+	// Borrar todos los productos
+	@FXML
+	void borrarTodosProductos(ActionEvent event) {
+	    // Crear un cuadro de diálogo para confirmar la eliminación
+	    Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+	    confirmacion.setTitle("Confirmar eliminación masiva");
+	    confirmacion.setHeaderText("¿Estás seguro de que deseas borrar TODOS los productos?");
 
-        Optional<ButtonType> resultado = confirmacion.showAndWait();
+	    Optional<ButtonType> resultado = confirmacion.showAndWait();
 
-        // Si el usuario confirma
-        if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
-            try (Connection conn = ConexionBD.getConnection()) {
-                String sql = "DELETE FROM producto";
-                PreparedStatement stmt = conn.prepareStatement(sql);
+	    // Si el usuario confirma
+	    if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+	        try {
+	            // Llamar al método que borra todos los productos respetando restricciones
+	            int cantidadBorrados = ProductoDatabase.borrarTodosProductos();
 
-                int filasAfectadas = stmt.executeUpdate();
+	            if (cantidadBorrados > 0) {
+	                // Recargar productos en la tabla para mostrar los cambios
+	                cargarProductos();
 
-                if (filasAfectadas > 0) {
-                    // Limpiar la tabla y recargar datos
-                    cargarProductos();
-
-                    Alertas.mostrarAlerta(Alert.AlertType.INFORMATION, "Éxito", "Todos los productos han sido eliminados.");
-                } else {
-                    Alertas.mostrarAlerta(Alert.AlertType.WARNING, "Sin cambios", "No había productos para eliminar.");
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-                Alertas.mostrarAlerta(Alert.AlertType.ERROR, "Error en la base de datos", e.getMessage());
-            }
-        }
-    }
+	                Alertas.mostrarAlerta(Alert.AlertType.INFORMATION, "Éxito",
+	                        "Se eliminaron " + cantidadBorrados + " productos correctamente.");
+	            } else {
+	                Alertas.mostrarAlerta(Alert.AlertType.WARNING, "Sin cambios",
+	                        "No se pudo eliminar ningún producto (quizás todos tienen ventas asociadas).");
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            Alertas.mostrarAlerta(Alert.AlertType.ERROR, "Error en la base de datos", e.getMessage());
+	        }
+	    }
+	}
 
 
-    //Editar producto
-    @FXML
-    void editarProducto(ActionEvent event) {
-        // Obtener el producto seleccionado en la tabla
-        Producto productoSeleccionado = tvProductos.getSelectionModel().getSelectedItem();
+	// Editar producto
+	@FXML
+	void editarProducto(ActionEvent event) {
+		// Obtener el producto seleccionado en la tabla
+		Producto productoSeleccionado = tvProductos.getSelectionModel().getSelectedItem();
 
-        // Verificar que hay producto seleccionado
-        if (productoSeleccionado != null) {
-            // Mostrar alerta de confirmación
-            Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmacion.setTitle("Confirmar edición");
-            confirmacion.setHeaderText("¿Estás seguro de que deseas editar este producto?");
-            confirmacion.setContentText("Producto: " + productoSeleccionado.getNombre());
+		// Verificar que hay producto seleccionado
+		if (productoSeleccionado != null) {
+			// Mostrar alerta de confirmación
+			Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+			confirmacion.setTitle("Confirmar edición");
+			confirmacion.setHeaderText("¿Estás seguro de que deseas editar este producto?");
+			confirmacion.setContentText("Producto: " + productoSeleccionado.getNombre());
 
-            Optional<ButtonType> resultado = confirmacion.showAndWait();
+			Optional<ButtonType> resultado = confirmacion.showAndWait();
 
-            // Si el usuario confirma
-            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
-                try {
-                    // Leer los nuevos datos de los campos de texto
-                    String nuevoNombre = txtFieldNombre.getText();
-                    double nuevoPrecio = Double.parseDouble(txtFieldPrecio.getText());
-                    int nuevoStock = Integer.parseInt(txtFieldStock.getText());
-                    String nuevaDescripcion = txtFieldDescripcion.getText();
+			// Si el usuario confirma
+			if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+				try {
+					// Leer los nuevos datos de los campos de texto
+					String nuevoNombre = txtFieldNombre.getText();
+					double nuevoPrecio = Double.parseDouble(txtFieldPrecio.getText());
+					int nuevoStock = Integer.parseInt(txtFieldStock.getText());
+					String nuevaDescripcion = txtFieldDescripcion.getText();
 
-                    // Actualizar el objeto Producto con los nuevos valores
-                    productoSeleccionado.setNombre(nuevoNombre);
-                    productoSeleccionado.setPrecio(nuevoPrecio);
-                    productoSeleccionado.setStock(nuevoStock);
-                    productoSeleccionado.setDescripcion(nuevaDescripcion);
+					// Actualizar el objeto Producto con los nuevos valores
+					productoSeleccionado.setNombre(nuevoNombre);
+					productoSeleccionado.setPrecio(nuevoPrecio);
+					productoSeleccionado.setStock(nuevoStock);
+					productoSeleccionado.setDescripcion(nuevaDescripcion);
 
-                    // Actualizar la base de datos
-                    try (Connection conn = ConexionBD.getConnection()) {
-                        String sql = "UPDATE producto SET nombre = ?, precio = ?, stock = ?, descripcion = ? WHERE id_producto = ?";
-                        PreparedStatement stmt = conn.prepareStatement(sql);
-                        stmt.setString(1, nuevoNombre);
-                        stmt.setDouble(2, nuevoPrecio);
-                        stmt.setInt(3, nuevoStock);
-                        stmt.setString(4, nuevaDescripcion);
-                        stmt.setInt(5, productoSeleccionado.getIdProducto());
+					// Actualizar la base de datos
+					try (Connection conn = ConexionBD.getConnection()) {
+						String sql = "UPDATE producto SET nombre = ?, precio = ?, stock = ?, descripcion = ? WHERE id_producto = ?";
+						PreparedStatement stmt = conn.prepareStatement(sql);
+						stmt.setString(1, nuevoNombre);
+						stmt.setDouble(2, nuevoPrecio);
+						stmt.setInt(3, nuevoStock);
+						stmt.setString(4, nuevaDescripcion);
+						stmt.setInt(5, productoSeleccionado.getIdProducto());
 
-                        int filasAfectadas = stmt.executeUpdate();
+						int filasAfectadas = stmt.executeUpdate();
 
-                        if (filasAfectadas > 0) {
-                            // Refrescar tabla para mostrar cambios
-                            cargarProductos();
+						if (filasAfectadas > 0) {
+							// Refrescar tabla para mostrar cambios
+							cargarProductos();
 
-                            // Mostrar mensaje de éxito
-                            Alertas.mostrarAlerta(Alert.AlertType.INFORMATION, "Éxito", "Producto actualizado correctamente.");
-                        } else {
-                            Alertas.mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo actualizar el producto.");
-                        }
-                    }
+							// Mostrar mensaje de éxito
+							Alertas.mostrarAlerta(Alert.AlertType.INFORMATION, "Éxito",
+									"Producto actualizado correctamente.");
+						} else {
+							Alertas.mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo actualizar el producto.");
+						}
+					}
 
-                } catch (NumberFormatException e) {
-                    Alertas.mostrarAlerta(Alert.AlertType.WARNING, "Entrada inválida", "Precio y stock deben ser números válidos.");
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    Alertas.mostrarAlerta(Alert.AlertType.ERROR, "Error en la base de datos", e.getMessage());
-                }
-            }
+				} catch (NumberFormatException e) {
+					Alertas.mostrarAlerta(Alert.AlertType.WARNING, "Entrada inválida",
+							"Precio y stock deben ser números válidos.");
+				} catch (SQLException e) {
+					e.printStackTrace();
+					Alertas.mostrarAlerta(Alert.AlertType.ERROR, "Error en la base de datos", e.getMessage());
+				}
+			}
 
-        } else {
-            // Si no hay producto seleccionado, avisar al usuario
-            Alertas.mostrarAlerta(Alert.AlertType.WARNING, "Sin selección", "Selecciona un producto para editar.");
-        }
-    }
+		} else {
+			// Si no hay producto seleccionado, avisar al usuario
+			Alertas.mostrarAlerta(Alert.AlertType.WARNING, "Sin selección", "Selecciona un producto para editar.");
+		}
+	}
 
-
-    
 	// Volver a menu
 	@FXML
 	void volverMenu(MouseEvent event) {

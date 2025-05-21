@@ -31,7 +31,7 @@
             <TableColumn fx:id="tcProducto" prefWidth="240.800048828125" style="-fx-background-color: #a9947d;" text="Producto" />
             <TableColumn fx:id="tcStock" prefWidth="142.39996337890625" style="-fx-background-color: #a9947d;" text="Stock" />
             <TableColumn fx:id="tcVendido" prefWidth="140.800048828125" style="-fx-background-color: #a9947d;" text="Vendido" />
-            <TableColumn fx:id="TcDescripcion" prefWidth="168.0" style="-fx-background-color: #a9947d;" text="Encargado" />
+            <TableColumn fx:id="tcEncargado" prefWidth="168.0" style="-fx-background-color: #a9947d;" text="Encargado" />
          </columns>
       </TableView>
       <ImageView fx:id="imgReiniciar" fitHeight="44.0" fitWidth="50.0" layoutX="450.0" layoutY="347.0" onMouseClicked="#reiniciarVendido" pickOnBounds="true" preserveRatio="true">

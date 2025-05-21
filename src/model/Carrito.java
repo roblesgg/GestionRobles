@@ -28,4 +28,14 @@ public class Carrito {
     public double getSubtotal() {
         return producto.getPrecio() * cantidad;
     }
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+    
+    
 }

@@ -7,7 +7,8 @@ public class Producto {
     private double precio;
     private int stock;
     private String descripcion;
-    
+    private int vendido;
+
  // Constructor con ID (usado al leer desde la base de datos)
     public Producto(String nombre, double precio, int stock ,String descripcion) {
         this.nombre = nombre;
@@ -17,7 +18,13 @@ public class Producto {
     }
     
     //Getters y setters
-    
+    public int getVendido() {
+        return vendido;
+    }
+
+    public void setVendido(int vendido) {
+        this.vendido = vendido;
+    }
     
 	public String getNombre() {
 		return nombre;

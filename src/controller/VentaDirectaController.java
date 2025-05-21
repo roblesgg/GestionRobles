@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import database.ProductoDatabase;
+import database.VentaDatabase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Carrito;
 import model.Producto;
+import model.Venta;
 
 public class VentaDirectaController {
 
@@ -206,11 +208,59 @@ public class VentaDirectaController {
         }
     }
 
-    
+    //vender
     @FXML
     void venderCarrito(ActionEvent event) {
+        // Verifica si hay productos en el carrito
+        if (carrito.isEmpty()) {
+            lblCambio.setText("Carrito vacío");
+            lblCambio.setStyle("-fx-text-fill: red;");
+            return;
+        }
 
+        // Verifica si el efectivo es suficiente
+        double efectivo;
+        try {
+            efectivo = Double.parseDouble(txtFieldEfectivo.getText().trim());
+        } catch (NumberFormatException e) {
+            lblCambio.setText("Introduce un número válido");
+            lblCambio.setStyle("-fx-text-fill: orange;");
+            return;
+        }
+
+        double total = 0;
+        for (Carrito item : carrito) {
+            total += item.getSubtotal();
+        }
+
+        if (efectivo < total) {
+            lblCambio.setText("Efectivo insuficiente");
+            lblCambio.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // Registrar venta
+        Venta venta = new Venta(false, null); // venta directa
+        int idVenta = VentaDatabase.insertarVenta(venta);
+
+        if (idVenta > 0) {
+            VentaDatabase.insertarDetalleVenta(idVenta, carrito);
+            VentaDatabase.actualizarStock(carrito);
+
+            lblCambio.setText(String.format("Cambio: %.2f €", efectivo - total));
+            lblCambio.setStyle("-fx-text-fill: green;");
+
+            carrito.clear();
+            tvCarrito.refresh();
+            actualizarTotal();
+            cargarProductos(); // para refrescar stock en la tabla de productos
+
+        } else {
+            lblCambio.setText("Error al guardar venta");
+            lblCambio.setStyle("-fx-text-fill: red;");
+        }
     }
+
     
 	// Volver a menu
 	@FXML
