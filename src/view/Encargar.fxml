@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VentaDirectaController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EncargarController">
    <children>
       <ImageView fx:id="cambioAdevolver" fitHeight="438.0" fitWidth="712.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/imgFondoBlur.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgFlecha" fitHeight="50.0" fitWidth="50.0" layoutX="662.0" onMouseClicked="#volverMenu" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgFlecha" fitHeight="50.0" fitWidth="50.0" layoutX="662.0" onMouseClicked="#volverEncargos" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/imgVolver.png" />
          </image>

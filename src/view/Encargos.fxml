@@ -29,10 +29,10 @@
       </Label>
       <TableView fx:id="tvEncargos" layoutX="13.0" layoutY="51.0" prefHeight="328.0" prefWidth="391.0" style="-fx-background-color: #cab8a4;" styleClass="-fx-background-color:  #cab8a4;">
         <columns>
-          <TableColumn fx:id="tcEncargos" prefWidth="110.4000244140625" style="-fx-background-color: #a9947d;" text="Nombre" />
-          <TableColumn fx:id="tcEncargos" prefWidth="108.0" style="-fx-background-color: #a9947d;" text="Apellido" />
-            <TableColumn fx:id="tcEncargos" prefWidth="57.5999755859375" style="-fx-background-color: #a9947d;" text="Hora" />
-            <TableColumn fx:id="tcEncargos" prefWidth="115.20001220703125" style="-fx-background-color: #a9947d;" text="Descripcion" />
+          <TableColumn fx:id="tcNombreEncargos" prefWidth="110.4000244140625" style="-fx-background-color: #a9947d;" text="Nombre" />
+          <TableColumn fx:id="tcApellidoEncargos" prefWidth="108.0" style="-fx-background-color: #a9947d;" text="Apellido" />
+            <TableColumn fx:id="tcHoraEncargos" prefWidth="57.5999755859375" style="-fx-background-color: #a9947d;" text="Hora" />
+            <TableColumn fx:id="tcDescripcionEncargos" prefWidth="115.20001220703125" style="-fx-background-color: #a9947d;" text="Descripcion" />
         </columns>
       </TableView>
       <Button fx:id="btnBorrarTodo" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#borrarTodosEncargos" prefHeight="36.0" prefWidth="105.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: red; -fx-border-radius: 20; -fx-background-radius: 20;" text="Borrar Todos">
@@ -40,7 +40,7 @@
             <Font name="Calibri Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="tvEncargo" layoutX="454.0" layoutY="51.0" onMouseClicked="#restarDelCarrito" prefHeight="151.0" prefWidth="242.0" style="-fx-background-color: #cab8a4;" styleClass="-fx-background-color:  #cab8a4;">
+      <TableView fx:id="tvEncargo" layoutX="454.0" layoutY="51.0" onMouseClicked="#restarDelEncargo" prefHeight="151.0" prefWidth="242.0" style="-fx-background-color: #cab8a4;" styleClass="-fx-background-color:  #cab8a4;">
          <columns>
             <TableColumn fx:id="tcProductoEncargo" prefWidth="100.800048828125" style="-fx-background-color: #a9947d;" text="Producto" />
             <TableColumn fx:id="tcCantidadEncargo" prefWidth="78.39996337890625" style="-fx-background-color: #a9947d;" text="Cantidad" />
@@ -73,7 +73,12 @@
             <Font name="Calibri" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="btnVender" layoutX="446.0" layoutY="327.0" mnemonicParsing="false" onAction="#venderCarrito" prefHeight="46.0" prefWidth="250.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" text="Vender">
+      <Button fx:id="btnVender" layoutX="561.0" layoutY="327.0" mnemonicParsing="false" onAction="#venderEncargo" prefHeight="46.0" prefWidth="135.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" text="Vender">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnNuevo" layoutX="415.0" layoutY="327.0" mnemonicParsing="false" onAction="#abrirEncargar" prefHeight="46.0" prefWidth="135.0" style="-fx-background-color: #cab8a4; -fx-border-width: 1; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" text="Nuevo">
          <font>
             <Font name="Calibri Bold" size="25.0" />
          </font>

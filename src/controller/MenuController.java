@@ -58,6 +58,7 @@ public class MenuController {
 			e.printStackTrace();
 		}
 	}
+	
 
 	@FXML
 	void abrirHistorial(ActionEvent event) {
